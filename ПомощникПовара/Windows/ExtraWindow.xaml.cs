@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ПомощникПовара.Model;
 
 namespace ПомощникПовара.Windows
 {
@@ -19,9 +21,25 @@ namespace ПомощникПовара.Windows
     /// </summary>
     public partial class ExtraWindow : Window
     {
-        public ExtraWindow()
+        Extra extra;
+        public ExtraWindow(Extra extra=null)
         {
             InitializeComponent();
+            if (extra == null)
+            {
+                DataContext = this.extra = new Extra();
+            }
+            else
+            {
+                DataContext = this.extra = extra;
+            }
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Global.db.Extras.AddOrUpdate(extra);
+            Global.db.SaveChanges();
+            Close();
         }
     }
 }

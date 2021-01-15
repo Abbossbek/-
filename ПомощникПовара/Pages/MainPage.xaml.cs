@@ -25,7 +25,7 @@ namespace ПомощникПовара.Pages
         {
             InitializeComponent();
             lbProducts.ItemsSource = Global.db.Products.ToList();
-            lbAdditional.ItemsSource = new List<Product>() { new Product() { Name = "Olma" } };
+            lbExtras.ItemsSource = Global.db.Extras.ToList();
         }
     }
 }

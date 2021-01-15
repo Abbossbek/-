@@ -21,7 +21,7 @@
                             <StackPanel Orientation="Vertical" Margin="5" Background="{TemplateBinding Background}">
                                 <materialDesign:Card >
                                     <Grid>
-                                    <materialDesign:PackIcon Kind="Food" Visibility="{Binding Path=HasIcon}" Height="100" Width="100"/>
+                                    <materialDesign:PackIcon Kind="Food" Height="100" Width="100"/>
                                     <Image Source="{Binding Path=IconSource}" Height="100" Width="100"/>
                                     </Grid>
                                 </materialDesign:Card>

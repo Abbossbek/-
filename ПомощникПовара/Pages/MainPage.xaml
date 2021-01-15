@@ -35,7 +35,7 @@
         </Border>
         <TextBlock Text="Выберите дополнительные условия" Grid.Row="2" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border Grid.Row="3" BorderBrush="Green" BorderThickness="1" CornerRadius="20" Margin="10">
-            <ListBox x:Name="lbAdditional" Padding="5">
+            <ListBox x:Name="lbExtras" Padding="5">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal">
@@ -44,8 +44,7 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <CheckBox Margin="5" Content="{Binding Path=Name}">
-                        </CheckBox>
+                        <CheckBox Margin="5" Content="{Binding Path=Name}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

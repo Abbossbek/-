@@ -34,8 +34,6 @@ namespace ПомощникПовара.Windows
             {
                 DataContext = this.product = product;
             }
-            if (string.IsNullOrWhiteSpace(product?.IconSource))
-                piProduct.Visibility = Visibility.Collapsed;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -53,8 +51,6 @@ namespace ПомощникПовара.Windows
             try
             {
                 img.Source = new BitmapImage(new Uri(product.IconSource));
-                if (string.IsNullOrWhiteSpace(product?.IconSource))
-                    piProduct.Visibility = Visibility.Collapsed;
             }
             catch (Exception ex) { }
         }

@@ -22,10 +22,13 @@ namespace ПомощникПовара.Pages
     /// </summary>
     public partial class AddingPage : Page
     {
+        public ProductWindow ExtraWindow { get; private set; }
+
         public AddingPage()
         {
             InitializeComponent();
             lbProducts.ItemsSource = Global.db.Products.ToList();
+            lbExtras.ItemsSource = Global.db.Extras.ToList();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -37,7 +40,9 @@ namespace ПомощникПовара.Pages
 
         private void btnAddExtra_Click(object sender, RoutedEventArgs e)
         {
-
+            ExtraWindow extraWindow  = new ExtraWindow();
+            extraWindow.ShowDialog();
+            lbExtras.ItemsSource = Global.db.Extras.ToList();
         }
     }
 }

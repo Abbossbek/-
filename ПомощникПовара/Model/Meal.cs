@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ПомощникПовара.Model
 {
-    class Meal
+    public class Meal
     {
         [Key]
         public int Id { get; set; }

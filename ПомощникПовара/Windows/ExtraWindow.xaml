@@ -3,10 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ПомощникПовара.Windows"
+        xmlns:local="clr-namespace:ПомощникПовара.Windows" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ExtraWindow" Height="450" Width="800">
+        Title="ExtraWindow" Height="250" Width="500">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добавление условие" Grid.ColumnSpan="2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="1" MaxWidth="400">
+            
+            <TextBox x:Name="tbName" Text="{Binding Path=Name}" Margin="5"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    MaxWidth="400"
+    materialDesign:HintAssist.Hint="Условие"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" />
+        </StackPanel>
+        <Button x:Name="btnAdd" Grid.Row="3" MaxWidth="200" Height="50" Click="btnAdd_Click" Content="Add" Margin="5" FontSize="25"/>
     </Grid>
 </Window>

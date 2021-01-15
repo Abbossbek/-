@@ -50,15 +50,14 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <MenuItem Style="{DynamicResource checkableMenuitemStyle}"/>
+                        <CheckBox Margin="5" Content="{Binding Path=Name}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
         <TextBlock Text="Введите название блюда" Grid.Row="3" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Border Grid.Row="4" BorderBrush="Green" BorderThickness="1" CornerRadius="20" Margin="10">
-            <TextBox x:Name="tbName" Text="{Binding Path=Name}"/>
-        </Border>
+           <TextBox x:Name="tbName" Grid.Row="4" MaxWidth="400" FontSize="25" Style="{DynamicResource MaterialDesignOutlinedTextFieldTextBox}" Text="{Binding Path=Name}"/>
+            
         <Button x:Name="btnFind" Content="Найти" FontSize="25" Grid.Row="5" Width="400" Height="70"/>
     </Grid>
 </Page>

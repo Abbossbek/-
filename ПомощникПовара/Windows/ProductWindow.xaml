@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ПомощникПовара.Windows" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ProductWindow" Height="480" Width="500">
+        Title="ProductWindow" Height="430" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -15,16 +15,16 @@
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Добавление продукт" Grid.ColumnSpan="2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <materialDesign:PackIcon Kind="Food" Grid.Row="1" Width="100" Height="100" Margin="5" HorizontalAlignment="Center"/>
         <Image x:Name="img" Grid.Row="1" Width="100" Height="100" Margin="5" />
-        <materialDesign:PackIcon Kind="Food" Visibility="{Binding Path=HasIcon}" Grid.Row="1" Width="100" Height="100" Margin="5" HorizontalAlignment="Center" />
         <StackPanel Grid.Row="2" MaxWidth="400">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="tbImage" Text="{Binding Path=IconSource, Mode=OneWay}" Margin="5"
-    Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                <TextBox x:Name="tbImage" IsReadOnly="True" Text="{Binding Path=IconSource}" Margin="5"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top"
     AcceptsReturn="True"
     TextWrapping="Wrap"
@@ -32,13 +32,13 @@
     materialDesign:HintAssist.Hint="Выберите изображение "
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" />
 
-                <Button x:Name="btnOpen" Click="btnOpen_Click" Grid.Column="1" Height="65"
+                <Button x:Name="btnOpen" Click="btnOpen_Click" Grid.Column="1" Height="40"
     Style="{StaticResource MaterialDesignRaisedLightButton}"
     materialDesign:ButtonAssist.CornerRadius="5" Content="..."
     ToolTip="MaterialDesignRaisedLightButton with Round Corners"/>
             </Grid>
             <TextBox x:Name="tbName" Text="{Binding Path=Name}" Margin="5"
-    Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top"
     AcceptsReturn="True"
     TextWrapping="Wrap"
