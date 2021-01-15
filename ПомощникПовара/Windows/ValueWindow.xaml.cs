@@ -10,26 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ПомощникПовара.Windows;
 
-namespace ПомощникПовара.Pages
+namespace ПомощникПовара.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddingPage.xaml
+    /// Логика взаимодействия для ValueWindow.xaml
     /// </summary>
-    public partial class AddingPage : Page
+    public partial class ValueWindow : Window
     {
-        public AddingPage()
+        public ValueWindow()
         {
             InitializeComponent();
-        }
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            ProductWindow productWindow = new ProductWindow();
-            productWindow.ShowDialog();
         }
     }
 }

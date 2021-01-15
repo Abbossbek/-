@@ -40,7 +40,7 @@ namespace ПомощникПовара.Pages
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddingPage());
         }
     }
 }
