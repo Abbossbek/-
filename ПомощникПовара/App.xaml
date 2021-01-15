@@ -12,7 +12,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-          
+
             <Style x:Key="checkableMenuitemStyle" TargetType="MenuItem">
                 <Setter Property="IsCheckable" Value="True"/>
                 <Setter Property="Template">
@@ -21,8 +21,8 @@
                             <StackPanel Orientation="Vertical" Margin="5" Background="{TemplateBinding Background}">
                                 <materialDesign:Card >
                                     <Grid>
-                                    <materialDesign:PackIcon Kind="Food" Height="100" Width="100"/>
-                                    <Image Source="{Binding Path=IconSource}" Height="100" Width="100"/>
+                                        <materialDesign:PackIcon Kind="Food" Height="100" Width="100"/>
+                                        <Image Source="{Binding Path=IconSource}" Height="100" Width="100"/>
                                     </Grid>
                                 </materialDesign:Card>
                                 <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Center" FontSize="20"/>

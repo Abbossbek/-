@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,27 +23,60 @@ namespace ПомощникПовара.Pages
     /// </summary>
     public partial class AddingPage : Page
     {
-        public ProductWindow ExtraWindow { get; private set; }
+        Meal meal;
 
-        public AddingPage()
+        public AddingPage(Meal meal=null)
         {
             InitializeComponent();
-            lbProducts.ItemsSource = Global.db.Products.ToList();
-            lbExtras.ItemsSource = Global.db.Extras.ToList();
+            if (meal == null)
+            {
+                DataContext = this.meal = new Meal();
+            }else
+            {
+                DataContext = this.meal = meal;
+            }
+            if (this.meal.Products == null)
+                this.meal.Products = new List<Product>();
+            if (this.meal.Extras == null)
+                this.meal.Extras = new List<Extra>();
+            lbProducts.ItemsSource = this.meal.Products;
+            lbExtras.ItemsSource = this.meal.Extras;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            ProductWindow productWindow = new ProductWindow();
+            SelectProductWindow productWindow = new SelectProductWindow();
             productWindow.ShowDialog();
-            lbProducts.ItemsSource = Global.db.Products.ToList();
+            if (productWindow.DialogResult == true)
+            {
+                meal.Products.AddRange(productWindow.Products);
+            }
+            lbProducts.ItemsSource = meal.Products;
+            lbProducts.Items.Refresh();
         }
 
         private void btnAddExtra_Click(object sender, RoutedEventArgs e)
         {
-            ExtraWindow extraWindow  = new ExtraWindow();
+            SelectExtraWindow extraWindow  = new SelectExtraWindow();
             extraWindow.ShowDialog();
-            lbExtras.ItemsSource = Global.db.Extras.ToList();
+            if (extraWindow.DialogResult == true)
+            {
+                meal.Extras.AddRange(extraWindow.Extras);
+            }
+            lbExtras.ItemsSource = meal.Extras;
+            lbExtras.Items.Refresh();
+        }
+
+        private void btnOpenImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*" };
+            openFileDialog.ShowDialog();
+            meal.IconSource = openFileDialog.FileName;
+            try
+            {
+                img.Source = new BitmapImage(new Uri(meal.IconSource));
+            }
+            catch (Exception ex) { }
         }
     }
 }

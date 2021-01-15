@@ -74,6 +74,9 @@
     </ApplicationDefinition>
     <Compile Include="Model\Global.cs" />
     <Compile Include="Model\Meal.cs" />
+    <Compile Include="Pages\MealsPage.xaml.cs">
+      <DependentUpon>MealsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,12 @@
     </Compile>
     <Compile Include="Windows\ProductWindow.xaml.cs">
       <DependentUpon>ProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SelectExtraWindow.xaml.cs">
+      <DependentUpon>SelectExtraWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SelectProductWindow.xaml.cs">
+      <DependentUpon>SelectProductWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ValueWindow.xaml.cs">
       <DependentUpon>ValueWindow.xaml</DependentUpon>
@@ -107,6 +116,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MealsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\StartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +133,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SelectExtraWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SelectProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

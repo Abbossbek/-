@@ -12,6 +12,7 @@ namespace ПомощникПовара.Model
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string IconSource { get; set; }
         public List<Product> Products { get; set; }
         public List<Extra> Extras { get; set; }
     }

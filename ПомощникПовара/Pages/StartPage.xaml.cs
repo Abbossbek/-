@@ -38,7 +38,8 @@ namespace ПомощникПовара.Pages
         {
             NavigationService.Navigate(new MainPage());
         }
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+
+        private void btnMeals_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddingPage());
         }
