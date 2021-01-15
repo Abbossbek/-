@@ -34,22 +34,27 @@ namespace ПомощникПовара.Windows
             {
                 DataContext = this.product = product;
             }
+            if (string.IsNullOrWhiteSpace(product?.IconSource))
+                piProduct.Visibility = Visibility.Collapsed;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Global.db.Products.AddOrUpdate(product);
+            Global.db.SaveChanges();
             Close();
         }
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog() { Filter= "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"};
             openFileDialog.ShowDialog();
             product.IconSource = openFileDialog.FileName;
             try
             {
                 img.Source = new BitmapImage(new Uri(product.IconSource));
+                if (string.IsNullOrWhiteSpace(product?.IconSource))
+                    piProduct.Visibility = Visibility.Collapsed;
             }
             catch (Exception ex) { }
         }

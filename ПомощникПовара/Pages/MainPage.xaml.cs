@@ -24,7 +24,7 @@ namespace ПомощникПовара.Pages
         public MainPage()
         {
             InitializeComponent();
-            lbProducts.ItemsSource = new List<Product>() { new Product() { Name = "Olma" }, new Product() { Name = "Nok" } };
+            lbProducts.ItemsSource = Global.db.Products.ToList();
             lbAdditional.ItemsSource = new List<Product>() { new Product() { Name = "Olma" } };
         }
     }

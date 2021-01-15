@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ПомощникПовара.Model
 {
-    public class Product
+    class Meal
     {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string IconSource { get; set; }
-        public bool HasIcon { get { return string.IsNullOrEmpty(IconSource); } }
+        public List<Product> Products { get; set; }
+        public List<Extra> Extras { get; set; }
     }
 }

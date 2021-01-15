@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ПомощникПовара.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="750" d:DesignWidth="1000"
+      d:DesignHeight="850" d:DesignWidth="1000"
       Title="AddingPage" Background="White">
 
     <Grid>
@@ -39,7 +39,7 @@
             </ListBox>
         </Border>
         <TextBlock Text="Дополнительные условия" Grid.Row="0" Grid.Column="1" Height="50" FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-        <Button Content="Добавить" Grid.Row="2" Grid.Column="1" Height="50" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button x:Name="btnAddExtra" Click="btnAddExtra_Click" Content="Добавить" Grid.Row="2" Grid.Column="1" Height="50" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border Grid.Row="1" Grid.Column="1" BorderBrush="Green" BorderThickness="1" CornerRadius="20" Margin="10">
             <ListBox x:Name="lbExtras" Padding="5">
                 <ListBox.ItemsPanel>
@@ -55,23 +55,10 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
-        <TextBlock Text="Выберите дополнительные условия" Grid.Row="3" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="Введите название блюда" Grid.Row="3" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border Grid.Row="4" BorderBrush="Green" BorderThickness="1" CornerRadius="20" Margin="10">
-            <ListBox x:Name="lbAdditional" Padding="5">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal">
-                        </WrapPanel>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <CheckBox Margin="5" Content="{Binding Path=Name}">
-                        </CheckBox>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <TextBox x:Name="tbName" Text="{Binding Path=Name}"/>
         </Border>
-        <Button x:Name="btnFind" Content="Найти" FontSize="25" Grid.Row="4" Width="400" Height="70"/>
+        <Button x:Name="btnFind" Content="Найти" FontSize="25" Grid.Row="5" Width="400" Height="70"/>
     </Grid>
 </Page>

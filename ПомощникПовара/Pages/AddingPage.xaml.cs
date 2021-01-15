@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ПомощникПовара.Model;
 using ПомощникПовара.Windows;
 
 namespace ПомощникПовара.Pages
@@ -24,12 +25,19 @@ namespace ПомощникПовара.Pages
         public AddingPage()
         {
             InitializeComponent();
+            lbProducts.ItemsSource = Global.db.Products.ToList();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             ProductWindow productWindow = new ProductWindow();
             productWindow.ShowDialog();
+            lbProducts.ItemsSource = Global.db.Products.ToList();
+        }
+
+        private void btnAddExtra_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
