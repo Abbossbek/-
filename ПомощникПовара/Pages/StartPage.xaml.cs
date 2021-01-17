@@ -41,7 +41,7 @@ namespace ПомощникПовара.Pages
 
         private void btnMeals_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddingPage());
+            NavigationService.Navigate(new MealsPage());
         }
     }
 }

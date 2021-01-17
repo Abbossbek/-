@@ -19,7 +19,7 @@
         <TextBlock Text="Выберите продукты питания" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border Grid.Row="1" BorderBrush="Green" BorderThickness="1" CornerRadius="20" Margin="10">
 
-            <ListBox x:Name="lbProducts" Padding="5">
+            <ListBox x:Name="lbProducts" Padding="5" SelectionMode="Multiple">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal">
@@ -28,14 +28,14 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <MenuItem Style="{DynamicResource checkableMenuitemStyle}"/>
+                        <MenuItem Style="{DynamicResource checkableMenuitemStyle}" IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=ListBoxItem},Mode=OneWayToSource}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
         <TextBlock Text="Выберите дополнительные условия" Grid.Row="2" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border Grid.Row="3" BorderBrush="Green" BorderThickness="1" CornerRadius="20" Margin="10">
-            <ListBox x:Name="lbExtras" Padding="5">
+            <ListBox x:Name="lbExtras" Padding="5" SelectionMode="Multiple">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal">
@@ -44,11 +44,16 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <CheckBox Margin="5" Content="{Binding Path=Name}"/>
+                        <CheckBox Margin="5" Content="{Binding Path=Name}" IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=ListBoxItem},Mode=OneWayToSource}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
-        <Button x:Name="btnFind" Content="Найти" FontSize="25" Grid.Row="4" Width="400" Height="70"/>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnBack" Click="btnBack_Click" Content="Назад" Margin="5" Height="50" FontSize="25" />
+
+            <Button x:Name="btnFind" Click="btnFind_Click" Content="Найти" Margin="5" Height="50" FontSize="25" />
+        </StackPanel>
+
     </Grid>
 </Page>

@@ -14,7 +14,7 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" BorderBrush="Green" BorderThickness="1" CornerRadius="20" Margin="10">
-            <ListBox x:Name="lbProducts" Padding="5">
+            <ListBox x:Name="lbMeals" Padding="5" SelectionMode="Single">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal">
@@ -23,11 +23,14 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <MenuItem Style="{DynamicResource checkableMenuitemStyle}" IsCheckable="False"/>
+                        <MenuItem MouseDoubleClick="MenuItem_MouseDoubleClick" Style="{DynamicResource checkableMenuitemStyle}" IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=ListBoxItem},Mode=TwoWay}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
-        <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Добавить" Grid.Row="2" Height="50" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+        <Button x:Name="btnBack" Click="btnBack_Click" Content="Назад" Margin="5" Height="50" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Добавить" Margin="5" Height="50" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Page>

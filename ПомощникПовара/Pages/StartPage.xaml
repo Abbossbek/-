@@ -9,9 +9,9 @@
       Title="StartPage">
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Width="400">
-            <Button x:Name="btnStart" Click="btnStart_Click" Content="Start" Margin="5" Height="80" FontSize="30"/>
+            <Button x:Name="btnStart" Click="btnStart_Click" Content="Начать" Margin="5" Height="80" FontSize="30"/>
             <Button x:Name="btnMeals" Click="btnMeals_Click" Content="Блюда" Margin="5" Height="80" FontSize="30"/>
-            <Button x:Name="btnExit" Click="btnExit_Click" Content="Close" Background="Red" Margin="5" Height="80" FontSize="30"/>
+            <Button x:Name="btnExit" Click="btnExit_Click" Content="Закрить" Background="Red" Margin="5" Height="80" FontSize="30"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ namespace ПомощникПовара.Pages
             }else
             {
                 DataContext = this.meal = meal;
+                btnAdd.Content = "Изменить";
             }
             if (this.meal.Products == null)
                 this.meal.Products = new List<Product>();
@@ -45,14 +47,9 @@ namespace ПомощникПовара.Pages
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            SelectProductWindow productWindow = new SelectProductWindow();
-            productWindow.ShowDialog();
-            if (productWindow.DialogResult == true)
-            {
-                meal.Products.AddRange(productWindow.Products);
-            }
-            lbProducts.ItemsSource = meal.Products;
-            lbProducts.Items.Refresh();
+            Global.db.Meals.AddOrUpdate(meal);
+            Global.db.SaveChanges();
+            NavigationService.Navigate(new MealsPage());
         }
 
         private void btnAddExtra_Click(object sender, RoutedEventArgs e)
@@ -77,6 +74,23 @@ namespace ПомощникПовара.Pages
                 img.Source = new BitmapImage(new Uri(meal.IconSource));
             }
             catch (Exception ex) { }
+        }
+
+        private void btnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            SelectProductWindow productWindow = new SelectProductWindow();
+            productWindow.ShowDialog();
+            if (productWindow.DialogResult == true)
+            {
+                meal.Products.AddRange(productWindow.Products);
+            }
+            lbProducts.ItemsSource = meal.Products;
+            lbProducts.Items.Refresh();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

@@ -72,6 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DBContext\DataBaseContext.Views.cs" />
     <Compile Include="Model\Global.cs" />
     <Compile Include="Model\Meal.cs" />
     <Compile Include="Pages\MealsPage.xaml.cs">
@@ -83,6 +84,9 @@
     <Compile Include="Windows\ExtraWindow.xaml.cs">
       <DependentUpon>ExtraWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\FindedMealsWindow.xaml.cs">
+      <DependentUpon>FindedMealsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ProductWindow.xaml.cs">
       <DependentUpon>ProductWindow.xaml</DependentUpon>
     </Compile>
@@ -91,6 +95,9 @@
     </Compile>
     <Compile Include="Windows\SelectProductWindow.xaml.cs">
       <DependentUpon>SelectProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SimpleArtificialIntelligenceWindow.xaml.cs">
+      <DependentUpon>SimpleArtificialIntelligenceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ValueWindow.xaml.cs">
       <DependentUpon>ValueWindow.xaml</DependentUpon>
@@ -132,6 +139,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\FindedMealsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\SelectProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SimpleArtificialIntelligenceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
