@@ -17,6 +17,10 @@ namespace ПомощникПовара.DBContext
         public DbSet<Product> Products { get; set; }
         public DbSet<Extra> Extras { get; set; }
         public DbSet<Meal> Meals { get; set; }
+        public DbSet<Atribut> Atributs { get; set; }
+        public DbSet<Value> Values { get; set; }
+        public DbSet<Result> Results { get; set; }
+        public DbSet<AtributValuePair> AtributValuePairs { get; set; }
 
     }
 }

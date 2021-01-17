@@ -73,8 +73,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DBContext\DataBaseContext.Views.cs" />
+    <Compile Include="Model\Atribut.cs" />
+    <Compile Include="Model\EFKeyValuePair.cs" />
     <Compile Include="Model\Global.cs" />
     <Compile Include="Model\Meal.cs" />
+    <Compile Include="Model\Result.cs" />
+    <Compile Include="Model\Value.cs" />
     <Compile Include="Pages\MealsPage.xaml.cs">
       <DependentUpon>MealsPage.xaml</DependentUpon>
     </Compile>

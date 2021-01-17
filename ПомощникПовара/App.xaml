@@ -36,6 +36,13 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <Style TargetType="materialDesign:PackIcon">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="LightGreen"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

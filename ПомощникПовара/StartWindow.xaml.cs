@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ПомощникПовара.DBContext;
 using ПомощникПовара.Model;
+using ПомощникПовара.Windows;
 
 namespace ПомощникПовара
 {
@@ -44,7 +45,7 @@ namespace ПомощникПовара
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.Hide();
-                MainWindow mainForm = new MainWindow();
+            SimpleArtificialIntelligenceWindow mainForm = new SimpleArtificialIntelligenceWindow();
                 mainForm.Closing += Window_Closing;
                 mainForm.ShowDialog();
         }

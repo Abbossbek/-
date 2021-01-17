@@ -3,19 +3,81 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ПомощникПовара.Windows"
+        xmlns:local="clr-namespace:ПомощникПовара.Windows" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="SimpleArtificialIntelligenceWindow" Height="450" Width="800">
-    <TabControl Margin="10">
-        <TabItem Header="Эксперт">
-            <Grid>
-                
-            </Grid>
-        </TabItem>
-        <TabItem Header="">
-            <Grid>
-                
-            </Grid>
-        </TabItem>
-    </TabControl>
+        Title="SimpleArtificialIntelligenceWindow" Height="450" Width="800" Margin="10">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="dgAtributs" Grid.Row="0" BorderThickness="1" Margin="10" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Атрибуты" Binding="{Binding Path=Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <materialDesign:PackIcon x:Name="btnAddAtribut" MouseDown="btnAddAtribut_MouseDown" Kind="Add" BorderThickness="1" BorderBrush="Black" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20"/>
+        <DataGrid x:Name="dgValues" Grid.Row="0" Grid.Column="1" BorderThickness="1" Margin="10" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Значение" Binding="{Binding Path=Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <materialDesign:PackIcon x:Name="btnAddValue" MouseDown="btnAddValue_MouseDown" Grid.Column="1" Kind="Add" BorderThickness="1" BorderBrush="Black" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20"/>
+        <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="2" BorderBrush="Green" BorderThickness="1" CornerRadius="10" Margin="10">
+            <ListBox x:Name="lbResults"/>
+        </Border>
+        <TextBlock Text="Продукционное правило" Grid.Row="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Border Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Green" BorderThickness="1" CornerRadius="10" Margin="10">
+            <DockPanel>
+                <Grid DockPanel.Dock="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Тогда" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <ComboBox x:Name="cbAtribut" SelectedItem="{Binding Atribut}" DisplayMemberPath="Name" Grid.Column="1" Margin="5" Height="25"/>
+                    <ComboBox x:Name="cbValue" SelectedItem="{Binding Value}" DisplayMemberPath="Name" Grid.Column="3" Margin="5" Height="25"/>
+                    <TextBlock Text="=" Grid.Column="2" HorizontalAlignment="Center" Margin="5,8" Height="19"/>
+                    <Border BorderBrush="Green" BorderThickness="1" VerticalAlignment="Top" Panel.ZIndex="2" Grid.ColumnSpan="4"/>
+                    <Button x:Name="btnSave" Click="btnSave_Click" Content="Сохранить" Grid.Row="1" Grid.ColumnSpan="4" MaxWidth="200"/>
+                </Grid>
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="45"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="8*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel x:Name="spConditions">
+                            <TextBlock Text="Если"  Margin="5,8" Height="19" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel x:Name="spAtributs" Grid.Column="1">
+                            <ComboBox SelectedItem="{Binding Atribut}" DisplayMemberPath="Name" Margin="5" Height="25" />
+                        </StackPanel>
+                        <StackPanel x:Name="spEquals" Grid.Column="2" Orientation="Vertical">
+                            <TextBlock Text="=" HorizontalAlignment="Center" Margin="5,8" Height="19"/>
+                            <materialDesign:PackIcon x:Name="btnAddContition" MouseDown="btnAddContition_MouseDown" Kind="Add" BorderThickness="1" BorderBrush="Black" Width="20" Height="19" Margin="5,8" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel x:Name="spValues" Orientation="Vertical" Grid.Column="3">
+                            <ComboBox SelectedItem="{Binding Value}" DisplayMemberPath="Name" Margin="5" Height="25"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </DockPanel>
+        </Border>
+
+    </Grid>
 </Window>
