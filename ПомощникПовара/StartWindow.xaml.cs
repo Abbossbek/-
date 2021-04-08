@@ -25,7 +25,7 @@ namespace ПомощникПовара
     /// </summary>
     public partial class StartWindow : Window
     {
-        Product product;
+        Result result;
         public StartWindow()
         {
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace ПомощникПовара
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.Hide();
-            SimpleArtificialIntelligenceWindow mainForm = new SimpleArtificialIntelligenceWindow();
+            MainWindow mainForm = new MainWindow();
                 mainForm.Closing += Window_Closing;
                 mainForm.ShowDialog();
         }
@@ -59,14 +59,13 @@ namespace ПомощникПовара
         {
             try
             {
-                product = Global.db.Products.Find(1);
+                result = Global.db.Results.Find(1);
             }
             catch
             {
-
                 Global.db.Database.Delete();
                 Global.db = new DataBaseContext();
-                product = Global.db.Products.Find(1);
+                result = Global.db.Results.Find(1);
             }
         }
     }

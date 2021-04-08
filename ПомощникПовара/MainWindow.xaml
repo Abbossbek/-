@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:ПомощникПовара"
         mc:Ignorable="d" WindowState="Maximized" WindowStyle="None"
         Title="MainWindow" Height="450" Width="800">
-    <Frame x:Name="frame" NavigationUIVisibility="Hidden">
-
-    </Frame>
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <Button Name="btnExspert" Content="Экспорт" Click="btnExspert_Click" Margin="10"/>
+            <Button Name="btnUser" Content="Пользовател" Click="btnUser_Click" Margin="10"/>
+        </StackPanel>
+    </Grid>
 </Window>

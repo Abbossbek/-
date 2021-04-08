@@ -11,7 +11,7 @@ using System.Data.Entity.Infrastructure.MappingViews;
 
 [assembly: DbMappingViewCacheTypeAttribute(
     typeof(ПомощникПовара.DBContext.DataBaseContext),
-    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets493182c3820bb089445f982fcec475db274ad9871a32e88a5c4006922d477af3))]
+    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets95ef69e7d596969d9f26268c608906ad1affd897a86359b199b632c4f98ae314))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -23,14 +23,14 @@ namespace Edm_EntityMappingGeneratedViews
     /// Implements a mapping view cache.
     /// </summary>
     [GeneratedCode("Entity Framework 6 Power Tools", "0.9.2.0")]
-    internal sealed class ViewsForBaseEntitySets493182c3820bb089445f982fcec475db274ad9871a32e88a5c4006922d477af3 : DbMappingViewCache
+    internal sealed class ViewsForBaseEntitySets95ef69e7d596969d9f26268c608906ad1affd897a86359b199b632c4f98ae314 : DbMappingViewCache
     {
         /// <summary>
         /// Gets a hash value computed over the mapping closure.
         /// </summary>
         public override string MappingHashValue
         {
-            get { return "493182c3820bb089445f982fcec475db274ad9871a32e88a5c4006922d477af3"; }
+            get { return "95ef69e7d596969d9f26268c608906ad1affd897a86359b199b632c4f98ae314"; }
         }
 
         /// <summary>
@@ -112,46 +112,6 @@ namespace Edm_EntityMappingGeneratedViews
                 return GetView12();
             }
 
-            if (extentName == "CodeFirstDatabase.Extra")
-            {
-                return GetView13();
-            }
-
-            if (extentName == "CodeFirstDatabase.Meal")
-            {
-                return GetView14();
-            }
-
-            if (extentName == "CodeFirstDatabase.Product")
-            {
-                return GetView15();
-            }
-
-            if (extentName == "DataBaseContext.Extras")
-            {
-                return GetView16();
-            }
-
-            if (extentName == "DataBaseContext.Meal_Extras")
-            {
-                return GetView17();
-            }
-
-            if (extentName == "DataBaseContext.Meals")
-            {
-                return GetView18();
-            }
-
-            if (extentName == "DataBaseContext.Products")
-            {
-                return GetView19();
-            }
-
-            if (extentName == "DataBaseContext.Meal_Products")
-            {
-                return GetView20();
-            }
-
             return null;
         }
 
@@ -183,7 +143,7 @@ namespace Edm_EntityMappingGeneratedViews
     SELECT VALUE -- Constructing AtributValuePair
         [CodeFirstDatabaseSchema.AtributValuePair](T5.AtributValuePair_Id, T5.[AtributValuePair.Atribut_Id], T5.[AtributValuePair.Value_Id], T5.[AtributValuePair.Result_Id])
     FROM (
-        SELECT T1.AtributValuePair_Id, T2.[AtributValuePair.Atribut_Id], T3.[AtributValuePair.Value_Id], T4.[AtributValuePair.Result_Id], (T4._from0 AND T4._from0 IS NOT NULL) AS _from0, (T2._from1 AND T2._from1 IS NOT NULL) AS _from1, (T3._from2 AND T3._from2 IS NOT NULL) AS _from2, T1._from3
+        SELECT T1.AtributValuePair_Id, T4.[AtributValuePair.Atribut_Id], T2.[AtributValuePair.Value_Id], T3.[AtributValuePair.Result_Id], (T4._from0 AND T4._from0 IS NOT NULL) AS _from0, (T2._from1 AND T2._from1 IS NOT NULL) AS _from1, (T3._from2 AND T3._from2 IS NOT NULL) AS _from2, T1._from3
         FROM  (
             SELECT 
                 T.Id AS AtributValuePair_Id, 
@@ -191,24 +151,24 @@ namespace Edm_EntityMappingGeneratedViews
             FROM DataBaseContext.AtributValuePairs AS T) AS T1
             LEFT OUTER JOIN (
             SELECT 
-                Key(T.AtributValuePair_Atribut_Source).Id AS AtributValuePair_Id, 
-                Key(T.AtributValuePair_Atribut_Target).Id AS [AtributValuePair.Atribut_Id], 
-                True AS _from1
-            FROM DataBaseContext.AtributValuePair_Atribut AS T) AS T2
-            ON T1.AtributValuePair_Id = T2.AtributValuePair_Id
-            LEFT OUTER JOIN (
-            SELECT 
                 Key(T.AtributValuePair_Value_Source).Id AS AtributValuePair_Id, 
                 Key(T.AtributValuePair_Value_Target).Id AS [AtributValuePair.Value_Id], 
-                True AS _from2
-            FROM DataBaseContext.AtributValuePair_Value AS T) AS T3
-            ON T1.AtributValuePair_Id = T3.AtributValuePair_Id
+                True AS _from1
+            FROM DataBaseContext.AtributValuePair_Value AS T) AS T2
+            ON T1.AtributValuePair_Id = T2.AtributValuePair_Id
             LEFT OUTER JOIN (
             SELECT 
                 Key(T.Result_Conditions_Target).Id AS AtributValuePair_Id, 
                 Key(T.Result_Conditions_Source).Id AS [AtributValuePair.Result_Id], 
+                True AS _from2
+            FROM DataBaseContext.Result_Conditions AS T) AS T3
+            ON T1.AtributValuePair_Id = T3.AtributValuePair_Id
+            LEFT OUTER JOIN (
+            SELECT 
+                Key(T.AtributValuePair_Atribut_Source).Id AS AtributValuePair_Id, 
+                Key(T.AtributValuePair_Atribut_Target).Id AS [AtributValuePair.Atribut_Id], 
                 True AS _from0
-            FROM DataBaseContext.Result_Conditions AS T) AS T4
+            FROM DataBaseContext.AtributValuePair_Atribut AS T) AS T4
             ON T1.AtributValuePair_Id = T4.AtributValuePair_Id
     ) AS T5");
         }
@@ -484,198 +444,6 @@ namespace Edm_EntityMappingGeneratedViews
                     True AS _from0
                 FROM CodeFirstDatabase.Result AS T
                 WHERE T.Value_Id IS NOT NULL
-            ) AS T1
-        ) AS T2
-    ) AS T3");
-        }
-
-        /// <summary>
-        /// Gets the view for CodeFirstDatabase.Extra.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView13()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Extra
-        [CodeFirstDatabaseSchema.Extra](T3.Extra_Id, T3.Extra_Name, T3.[Extra.Meal_Id])
-    FROM (
-        SELECT T1.Extra_Id, T1.Extra_Name, T2.[Extra.Meal_Id], T1._from0, (T2._from1 AND T2._from1 IS NOT NULL) AS _from1
-        FROM  (
-            SELECT 
-                T.Id AS Extra_Id, 
-                T.Name AS Extra_Name, 
-                True AS _from0
-            FROM DataBaseContext.Extras AS T) AS T1
-            LEFT OUTER JOIN (
-            SELECT 
-                Key(T.Meal_Extras_Target).Id AS Extra_Id, 
-                Key(T.Meal_Extras_Source).Id AS [Extra.Meal_Id], 
-                True AS _from1
-            FROM DataBaseContext.Meal_Extras AS T) AS T2
-            ON T1.Extra_Id = T2.Extra_Id
-    ) AS T3");
-        }
-
-        /// <summary>
-        /// Gets the view for CodeFirstDatabase.Meal.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView14()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Meal
-        [CodeFirstDatabaseSchema.Meal](T1.Meal_Id, T1.Meal_Name, T1.Meal_IconSource)
-    FROM (
-        SELECT 
-            T.Id AS Meal_Id, 
-            T.Name AS Meal_Name, 
-            T.IconSource AS Meal_IconSource, 
-            True AS _from0
-        FROM DataBaseContext.Meals AS T
-    ) AS T1");
-        }
-
-        /// <summary>
-        /// Gets the view for CodeFirstDatabase.Product.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView15()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Product
-        [CodeFirstDatabaseSchema.Product](T3.Product_Id, T3.Product_Name, T3.Product_IconSource, T3.[Product.Meal_Id])
-    FROM (
-        SELECT T1.Product_Id, T1.Product_Name, T1.Product_IconSource, T2.[Product.Meal_Id], T1._from0, (T2._from1 AND T2._from1 IS NOT NULL) AS _from1
-        FROM  (
-            SELECT 
-                T.Id AS Product_Id, 
-                T.Name AS Product_Name, 
-                T.IconSource AS Product_IconSource, 
-                True AS _from0
-            FROM DataBaseContext.Products AS T) AS T1
-            LEFT OUTER JOIN (
-            SELECT 
-                Key(T.Meal_Products_Target).Id AS Product_Id, 
-                Key(T.Meal_Products_Source).Id AS [Product.Meal_Id], 
-                True AS _from1
-            FROM DataBaseContext.Meal_Products AS T) AS T2
-            ON T1.Product_Id = T2.Product_Id
-    ) AS T3");
-        }
-
-        /// <summary>
-        /// Gets the view for DataBaseContext.Extras.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView16()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Extras
-        [ПомощникПовара.DBContext.Extra](T1.Extra_Id, T1.Extra_Name) WITH 
-        RELATIONSHIP(CREATEREF(DataBaseContext.Meals, ROW(T1.[Meal_Extras.Meal_Extras_Source.Id]),[ПомощникПовара.DBContext.Meal]),[ПомощникПовара.DBContext.Meal_Extras],Meal_Extras_Target,Meal_Extras_Source) 
-    FROM (
-        SELECT 
-            T.Id AS Extra_Id, 
-            T.Name AS Extra_Name, 
-            True AS _from0, 
-            T.Meal_Id AS [Meal_Extras.Meal_Extras_Source.Id]
-        FROM CodeFirstDatabase.Extra AS T
-    ) AS T1");
-        }
-
-        /// <summary>
-        /// Gets the view for DataBaseContext.Meal_Extras.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView17()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Meal_Extras
-        [ПомощникПовара.DBContext.Meal_Extras](T3.[Meal_Extras.Meal_Extras_Source], T3.[Meal_Extras.Meal_Extras_Target])
-    FROM (
-        SELECT -- Constructing Meal_Extras_Source
-            CreateRef(DataBaseContext.Meals, row(T2.[Meal_Extras.Meal_Extras_Source.Id]), [ПомощникПовара.DBContext.Meal]) AS [Meal_Extras.Meal_Extras_Source], 
-            T2.[Meal_Extras.Meal_Extras_Target]
-        FROM (
-            SELECT -- Constructing Meal_Extras_Target
-                T1.[Meal_Extras.Meal_Extras_Source.Id], 
-                CreateRef(DataBaseContext.Extras, row(T1.[Meal_Extras.Meal_Extras_Target.Id]), [ПомощникПовара.DBContext.Extra]) AS [Meal_Extras.Meal_Extras_Target]
-            FROM (
-                SELECT 
-                    T.Meal_Id AS [Meal_Extras.Meal_Extras_Source.Id], 
-                    T.Id AS [Meal_Extras.Meal_Extras_Target.Id], 
-                    True AS _from0
-                FROM CodeFirstDatabase.Extra AS T
-                WHERE T.Meal_Id IS NOT NULL
-            ) AS T1
-        ) AS T2
-    ) AS T3");
-        }
-
-        /// <summary>
-        /// Gets the view for DataBaseContext.Meals.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView18()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Meals
-        [ПомощникПовара.DBContext.Meal](T1.Meal_Id, T1.Meal_Name, T1.Meal_IconSource)
-    FROM (
-        SELECT 
-            T.Id AS Meal_Id, 
-            T.Name AS Meal_Name, 
-            T.IconSource AS Meal_IconSource, 
-            True AS _from0
-        FROM CodeFirstDatabase.Meal AS T
-    ) AS T1");
-        }
-
-        /// <summary>
-        /// Gets the view for DataBaseContext.Products.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView19()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Products
-        [ПомощникПовара.DBContext.Product](T1.Product_Id, T1.Product_Name, T1.Product_IconSource) WITH 
-        RELATIONSHIP(CREATEREF(DataBaseContext.Meals, ROW(T1.[Meal_Products.Meal_Products_Source.Id]),[ПомощникПовара.DBContext.Meal]),[ПомощникПовара.DBContext.Meal_Products],Meal_Products_Target,Meal_Products_Source) 
-    FROM (
-        SELECT 
-            T.Id AS Product_Id, 
-            T.Name AS Product_Name, 
-            T.IconSource AS Product_IconSource, 
-            True AS _from0, 
-            T.Meal_Id AS [Meal_Products.Meal_Products_Source.Id]
-        FROM CodeFirstDatabase.Product AS T
-    ) AS T1");
-        }
-
-        /// <summary>
-        /// Gets the view for DataBaseContext.Meal_Products.
-        /// </summary>
-        /// <returns>The mapping view.</returns>
-        private static DbMappingView GetView20()
-        {
-            return new DbMappingView(@"
-    SELECT VALUE -- Constructing Meal_Products
-        [ПомощникПовара.DBContext.Meal_Products](T3.[Meal_Products.Meal_Products_Source], T3.[Meal_Products.Meal_Products_Target])
-    FROM (
-        SELECT -- Constructing Meal_Products_Source
-            CreateRef(DataBaseContext.Meals, row(T2.[Meal_Products.Meal_Products_Source.Id]), [ПомощникПовара.DBContext.Meal]) AS [Meal_Products.Meal_Products_Source], 
-            T2.[Meal_Products.Meal_Products_Target]
-        FROM (
-            SELECT -- Constructing Meal_Products_Target
-                T1.[Meal_Products.Meal_Products_Source.Id], 
-                CreateRef(DataBaseContext.Products, row(T1.[Meal_Products.Meal_Products_Target.Id]), [ПомощникПовара.DBContext.Product]) AS [Meal_Products.Meal_Products_Target]
-            FROM (
-                SELECT 
-                    T.Meal_Id AS [Meal_Products.Meal_Products_Source.Id], 
-                    T.Id AS [Meal_Products.Meal_Products_Target.Id], 
-                    True AS _from0
-                FROM CodeFirstDatabase.Product AS T
-                WHERE T.Meal_Id IS NOT NULL
             ) AS T1
         ) AS T2
     ) AS T3");

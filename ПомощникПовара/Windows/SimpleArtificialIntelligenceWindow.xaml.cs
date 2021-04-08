@@ -72,25 +72,14 @@ namespace ПомощникПовара.Windows
 
         private void btnAddContition_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            spConditions.Children.Add(GetClone<TextBlock>((TextBlock)spConditions.Children[0]));
+            spConditions.Children.Add(Global.GetClone<TextBlock>((TextBlock)spConditions.Children[0]));
             ((TextBlock)spConditions.Children[spConditions.Children.Count - 1]).Text = "и";
-            spAtributs.Children.Add(GetClone<ComboBox>((ComboBox)spAtributs.Children[0]));
-            spEquals.Children.Insert(0, GetClone<TextBlock>((TextBlock)spEquals.Children[0]));
-            spValues.Children.Add(GetClone<ComboBox>((ComboBox)spValues.Children[0]));
+            spAtributs.Children.Add(Global.GetClone<ComboBox>((ComboBox)spAtributs.Children[0]));
+            spEquals.Children.Insert(0, Global.GetClone<TextBlock>((TextBlock)spEquals.Children[0]));
+            spValues.Children.Add(Global.GetClone<ComboBox>((ComboBox)spValues.Children[0]));
         }
 
-        private T GetClone<T>(T element) where T : class, new()
-        {
-                var sourceProperties = typeof(T)
-                                        .GetProperties()
-                                        .Where(p => p.CanRead && p.CanWrite);
-                var newObj = new T();
-                foreach (var property in sourceProperties)
-                {
-                        property.SetValue(newObj, property.GetValue(element, null), null);
-                }
-                return newObj;
-        }
+       
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -115,12 +104,19 @@ namespace ПомощникПовара.Windows
                 });
             }
             if (cbAtribut.SelectedItem != null && cbValue.SelectedItem != null)
+            {
                 Global.db.Results.AddOrUpdate(new Result()
                 {
                     Atribut = (Atribut)cbAtribut.SelectedItem,
                     Value = (Value)cbValue.SelectedItem,
                     Conditions = atributValuePairs
                 });
+
+                spConditions.Children.RemoveRange(1,spConditions.Children.Count-1);
+                spAtributs.Children.RemoveRange(1, spAtributs.Children.Count - 1);
+                spEquals.Children.RemoveRange(0, spEquals.Children.Count - 2);
+                spValues.Children.RemoveRange(1, spValues.Children.Count - 1);
+            }
             else
                 MessageBox.Show("Заполните все");
             Refresh();

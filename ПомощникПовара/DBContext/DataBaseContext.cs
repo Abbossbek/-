@@ -14,9 +14,6 @@ namespace ПомощникПовара.DBContext
             Database.SetInitializer<DataBaseContext>(new CreateDatabaseIfNotExists<DataBaseContext>());
              Configuration.AutoDetectChangesEnabled = true;
         }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Extra> Extras { get; set; }
-        public DbSet<Meal> Meals { get; set; }
         public DbSet<Atribut> Atributs { get; set; }
         public DbSet<Value> Values { get; set; }
         public DbSet<Result> Results { get; set; }

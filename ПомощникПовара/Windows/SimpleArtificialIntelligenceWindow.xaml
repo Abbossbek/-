@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ПомощникПовара.Windows" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" WindowState="Maximized" WindowStyle="None"
+        mc:Ignorable="d" WindowState="Maximized" 
         Title="SimpleArtificialIntelligenceWindow" Height="450" Width="800" Margin="10">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,7 +30,13 @@
         </DataGrid>
         <materialDesign:PackIcon x:Name="btnAddValue" MouseDown="btnAddValue_MouseDown" Grid.Column="1" Kind="Add" BorderThickness="1" BorderBrush="Black" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20"/>
         <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="2" BorderBrush="Green" BorderThickness="1" CornerRadius="10" Margin="10">
-            <ListBox x:Name="lbResults"/>
+            <ListBox x:Name="lbResults">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" TextWrapping="WrapWithOverflow"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Border>
         <TextBlock Text="Продукционное правило" Grid.Row="1" Grid.ColumnSpan="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Green" BorderThickness="1" CornerRadius="10" Margin="10">
