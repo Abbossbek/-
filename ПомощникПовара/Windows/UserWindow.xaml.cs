@@ -71,9 +71,12 @@ namespace ПомощникПовара.Windows
                     Value = value
                 });
             }
+            int maxSimilarCount = 0;
+            Result nearestResult=null;
             foreach (var result in Global.db.Results.Include("Conditions").ToList())
             {
                 bool isResult = true;
+                int similarCount = 0;
                 foreach (var condition in result.Conditions)
                 {
                     if (atributValuePairs.Where(x=>x.Atribut == condition.Atribut && x.Value == condition.Value).Count()==0)
@@ -81,15 +84,44 @@ namespace ПомощникПовара.Windows
                         isResult = false;
                         break;
                     }
+                    else
+                    {
+                        similarCount++;
+                    }
                 }
                 if (isResult)
                 {
                     results.Add(result);
                 }
+                if (similarCount > maxSimilarCount)
+                {
+                    maxSimilarCount = similarCount;
+                    nearestResult = result;
+                }
             }
             if (results.Count == 0)
             {
                 tbResult.Text = "Я не могу вам ничего предложить...  ☹️";
+                if (nearestResult != null)
+                {
+                    tbResult.Text += "\nПожалуйста, выберите следующий факт!";
+                    foreach (var condition in nearestResult.Conditions)
+                    {
+                        if (atributValuePairs.Where(x => x.Atribut == condition.Atribut && x.Value == condition.Value).Count() == 0)
+                        {
+                            btnAddContition_MouseDown(null, null);
+                            foreach (ComboBox child in spAtributs.Children)
+                            {
+                                if (child.SelectedIndex == -1)
+                                {
+                                    child.SelectedItem = condition.Atribut;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
             }
             else
             {
@@ -100,10 +132,10 @@ namespace ПомощникПовара.Windows
                 }
                 tbResult.Text = tbResult.Text.Remove(tbResult.Text.Length - 3);
             }
-                spConditions.Children.RemoveRange(1, spConditions.Children.Count - 1);
-                spAtributs.Children.RemoveRange(1, spAtributs.Children.Count - 1);
-                spEquals.Children.RemoveRange(0, spEquals.Children.Count - 2);
-                spValues.Children.RemoveRange(1, spValues.Children.Count - 1);
+                //spConditions.Children.RemoveRange(1, spConditions.Children.Count - 1);
+                //spAtributs.Children.RemoveRange(1, spAtributs.Children.Count - 1);
+                //spEquals.Children.RemoveRange(0, spEquals.Children.Count - 2);
+                //spValues.Children.RemoveRange(1, spValues.Children.Count - 1);
         }
 
         private void btnAddContition_MouseDown(object sender, MouseButtonEventArgs e)
@@ -112,10 +144,13 @@ namespace ПомощникПовара.Windows
             ((TextBlock)spConditions.Children[spConditions.Children.Count - 1]).Text = "и";
             ComboBox cbAtribut = Global.GetClone<ComboBox>((ComboBox)spAtributs.Children[spAtributs.Children.Count - 1]);
             cbAtribut.ItemsSource = Global.db.Atributs.ToList();
+            cbAtribut.SelectedIndex = -1;
             cbAtribut.SelectionChanged += CbAtribut_SelectionChanged;
             spAtributs.Children.Add(cbAtribut);
             spEquals.Children.Insert(0, Global.GetClone<TextBlock>((TextBlock)spEquals.Children[0]));
-            spValues.Children.Add(Global.GetClone<ComboBox>((ComboBox)spValues.Children[0]));
+            ComboBox cbValue = Global.GetClone<ComboBox>((ComboBox)spValues.Children[0]);
+            cbValue.SelectedIndex = -1;
+            spValues.Children.Add(cbValue);
             ((ComboBox)spAtributs.Children[spAtributs.Children.Count-1]).ItemsSource = Global.db.Atributs.ToList();
             ((ComboBox)spValues.Children[spAtributs.Children.Count - 1]).ItemsSource = Global.db.Values.ToList();
         }
