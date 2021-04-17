@@ -82,7 +82,6 @@ namespace ПомощникПовара.Windows
                     if (atributValuePairs.Where(x=>x.Atribut == condition.Atribut && x.Value == condition.Value).Count()==0)
                     {
                         isResult = false;
-                        break;
                     }
                     else
                     {
@@ -93,7 +92,7 @@ namespace ПомощникПовара.Windows
                 {
                     results.Add(result);
                 }
-                if (similarCount > maxSimilarCount)
+                if (similarCount > maxSimilarCount && similarCount>=atributValuePairs.Count)
                 {
                     maxSimilarCount = similarCount;
                     nearestResult = result;
@@ -132,10 +131,6 @@ namespace ПомощникПовара.Windows
                 }
                 tbResult.Text = tbResult.Text.Remove(tbResult.Text.Length - 3);
             }
-                //spConditions.Children.RemoveRange(1, spConditions.Children.Count - 1);
-                //spAtributs.Children.RemoveRange(1, spAtributs.Children.Count - 1);
-                //spEquals.Children.RemoveRange(0, spEquals.Children.Count - 2);
-                //spValues.Children.RemoveRange(1, spValues.Children.Count - 1);
         }
 
         private void btnAddContition_MouseDown(object sender, MouseButtonEventArgs e)
@@ -153,6 +148,14 @@ namespace ПомощникПовара.Windows
             spValues.Children.Add(cbValue);
             ((ComboBox)spAtributs.Children[spAtributs.Children.Count-1]).ItemsSource = Global.db.Atributs.ToList();
             ((ComboBox)spValues.Children[spAtributs.Children.Count - 1]).ItemsSource = Global.db.Values.ToList();
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            spConditions.Children.RemoveRange(1, spConditions.Children.Count - 1);
+            spAtributs.Children.RemoveRange(1, spAtributs.Children.Count - 1);
+            spEquals.Children.RemoveRange(0, spEquals.Children.Count - 2);
+            spValues.Children.RemoveRange(1, spValues.Children.Count - 1);
         }
     }
 }

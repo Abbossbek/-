@@ -17,7 +17,10 @@
                 <TextBlock x:Name="tbResult" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"/>
                 
                 <Border BorderBrush="Green" BorderThickness="1" VerticalAlignment="Top" Panel.ZIndex="2" Grid.ColumnSpan="4"/>
-                <Button x:Name="btnResult" Click="btnResult_Click" Content="Результат" Grid.ColumnSpan="4" MaxWidth="200"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btnClear" Click="btnClear_Click" Margin="10,0" Content="Очистить" MaxWidth="200" />
+                    <Button x:Name="btnResult" Click="btnResult_Click"  Margin="10,0" Content="Результат" Grid.ColumnSpan="4" MaxWidth="200"/>
+                </StackPanel>
             </Grid>
             <ScrollViewer>
                 <Grid>
